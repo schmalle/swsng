@@ -1,0 +1,20 @@
+<testbed>
+
+	<globalsettings>
+			<username>test1</username>
+			<passwort>test1pw</passwort>
+			<remoteport>5060</remoteport>
+			<localport>5080</localport>
+			<transport>udp</transport>
+      <proxy>tel.metams.org</proxy>
+      <outboundProxy>127.0.0.1</outboundProxy>
+	</globalsettings>
+
+	<task>
+    <fork>false</fork>
+		<repeat>1</repeat>
+		<stackmode>1</stackmode>
+		<fileName>e:\source_vc\metasip\requests\register_test1_ok.txt</fileName>
+		<resultstack>401,200,200</resultstack>
+	</task>	
+</testbed>	
