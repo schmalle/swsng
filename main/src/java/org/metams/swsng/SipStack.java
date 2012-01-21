@@ -664,8 +664,7 @@ public class SipStack extends SipStackCore
 		String response = myCrypto.createResponse(m_userName, m_password, 
 												  getAlg(answer), getRealm(answer), getNonce(answer), 
 												  getSipMode(sendData.toUpperCase()),
-                							      getOpaque(answer), "sip:choochee467.register.prod.choochee.com");
-		//										  getOpaque(answer), "sip:tel.t-online.de");
+												  getOpaque(answer), "sip:tel.t-online.de");
 
         //TODO generic fix for authentication fix
 		
