@@ -1,0 +1,11 @@
+REGISTER sip:metams.homeip.net SIP/2.0
+Via: SIP/2.0/UDP 192.168.1.195:25080;branch=z9hG4bK-d87543-6a01b37da8c4f53c-1--d87543-;rport
+Max-Forwards: 70
+Contact: <sip:flake@192.168.1.195:25080;rinstance=6b4d1ed30d169265>;expires=0
+To: "666"<sip:flake@metams.homeip.net>
+From: "666"<sip:flake@metams.homeip.net>;tag=e0f84d13
+Call-ID: MzBiOTFkMjQyNzZjMmE2OGU5NTQyY2JkMjg1NTllMjc.
+CSeq: 3 REGISTER
+Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, NOTIFY, MESSAGE, SUBSCRIBE, INFO
+User-Agent: X-Lite release 1011b stamp 39984
+Content-Length: 0
