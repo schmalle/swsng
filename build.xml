@@ -1,0 +1,73 @@
+<project name="SipWorkshop Next Generation" default="dist" basedir=".">
+    <description>
+        simple example build file
+    </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="./main/src/java"/>
+  <property name="build" location="./WEB-INF/classes"/>
+  <property name="dist"  location="./target"/>
+ 
+	
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}"
+	     classpath="./lib/servlet-api.jar:./lib/jasper.jar:./lib/jsp-api.jar:./lib/el-api.jar:./lib/annotation-api.jar"
+    />
+  	
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution" >
+   
+  	<!-- Create the distribution directory -->
+    <mkdir dir="${dist}"/>
+    <mkdir dir="${build}"/>
+    <mkdir dir="${build}/../lib"/>
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="./target/swsng.jar" basedir="${build}"/>
+  </target>
+
+ 	<!-- Create the web distribution directory -->
+	<target name="webdist" depends="dist"
+	   description="generate the distribution" >
+
+	   <copy todir="./WEB-INF/lib">
+			<fileset dir="./lib/"/>
+	   </copy>
+		
+	   <mkdir dir="./test/WEB-INF"/>
+		
+		   <copy todir="./test/WEB-INF">
+				<fileset dir="./WEB-INF/"/>
+		   </copy>		
+	   
+		<jar jarfile="./target/swsng.war" basedir="./test/"/>
+		
+	   <delete dir="./test"/>
+		 		
+	  </target>	
+
+	<!-- Create the web distribution directory -->
+	<target name="deploy" depends="clean, webdist"
+	   description="generate the distribution" >
+		 
+		  <copy file="./target/swsng.war" todir="${TOMCAT}/webapps"/>
+	  </target>	
+	
+	
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>

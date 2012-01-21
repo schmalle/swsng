@@ -1,0 +1,4 @@
+Changes from 0.93 to 0.94:
+
+- fixed exception, if server does not give a algorithm for response calculcation, then
+    algorithm is defaulted to MD5
